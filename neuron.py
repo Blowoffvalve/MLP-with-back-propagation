@@ -21,7 +21,6 @@ class neuron(object):
             local_field = x[0]
         else:
             for i in range(len(x)):
-                print(x[i] * self.weights[i])
                 local_field += x[i] * self.weights[i]
         return local_field + self.bias
 
