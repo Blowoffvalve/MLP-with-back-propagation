@@ -18,21 +18,23 @@ class neuron(object):
         local_field = 0
         #print(len(self.inputNeurons))
         if(len(self.inputNeurons) == 0):
-            print("We're working with an input neuron")
+            #print("We're working with an input neuron")
             local_field = x[0]
         else:
             for i in range(len(x)):
                 #print(i, " ", self.weights, " ", len(self.weights), " ", len(x), x)
                 #print(self.weights[i])
+                #print(self.layer, " ", self.number)
                 local_field += x[i] * self.weights[i]
         return local_field + self.bias
 
     def sigmoid_function(self, x):
-        _retVal = 1 / (1 + e**-x)
+        _retVal = round(1 / round(1 + e**-x,4),4)
         return(_retVal)
 
     def sigmoid_function_prime(self, x):
-        return (e**-x)/(1 + e**-x)**2
+        return x*(1.0-x)
+        #return (e**-x)/(1 + e**-x)**2
 
     def add_input_neurons(self, inputNeuronList):
         for i in range(len(inputNeuronList)):
